@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {ActiveCard, InActiveCard} from "./card";
+import Flipper from "./Flipper";
 var data = require("./input.json");
 var _ = require('lodash');
 
@@ -30,10 +30,10 @@ class App extends Component {
 
     let content = Object.keys(s).map((key,index) => {
         if(s[key].active){
-          return <ActiveCard date={s[key].date} content={s[key].content} key={index}/>
+          return <Flipper date={s[key].date} content={s[key].content} orientation="horizontal" key={index}/>
         }
         else
-          return <InActiveCard  date={s[key].date} key={index}/>
+          return <Flipper date={s[key].date} content={s[key].content} key={index}/>
         });
 
     return (

@@ -4,7 +4,7 @@ import React from 'react';
 class CardFront extends React.Component {
   render() {
     return(
-      <div className='card-side side-front'>
+      <div className={'card-side side-front '+(this.props.visible ? 'hide-front' : '')}>
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-xs-6 side-front-content'>
@@ -16,10 +16,11 @@ class CardFront extends React.Component {
     )
   }
 }
-
+//<div className={(this.props.visible ? 'card-side' : 'hide-side')+' side-back'}>
 // React component for the back side of the card
 class CardBack extends React.Component {
   render() {
+
     return(
       <div className={(this.props.visible ? 'card-side' : 'hide-side')+' side-back'}>
         <div className='container-fluid'>
@@ -47,7 +48,7 @@ class ActiveCard extends React.Component {
       <div className={'card-container '+ (this.state.click ?'selected' : '')} onClick={this.toggle}>
         <div className='card-body'>
           <CardBack content={this.props.content} visible={this.state.click}/>
-          <CardFront date={this.props.date}/>
+          <CardFront date={this.props.date} visible={this.state.click}/>
         </div>
       </div>
     )
