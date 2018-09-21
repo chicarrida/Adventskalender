@@ -5,6 +5,10 @@ var data = require("./input.json");
 var _ = require('lodash');
 
 class App extends Component {
+  state = {selected: false}
+
+
+
   render() {
     let cards = [];
     //check for months

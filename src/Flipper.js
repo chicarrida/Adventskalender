@@ -1,12 +1,15 @@
 import React from 'react';
-
+/*
+from https://www.codementor.io/chrisharrington/building-a-flipper-using-react-js-and-less-css-du107v563
+*/
 class Flipper extends React.Component{
   state={
     flipped: false,
   }
 
   flip= ()=> {
-    this.setState({ flipped: !this.state.flipped });
+    //if(this.props.active)
+      this.setState({ flipped: !this.state.flipped });
   }
 
   render() {
