@@ -17,22 +17,11 @@ body {
   font-family: Arial;
   font-size: 14px;
 }
-body > span,
-body > h1 {
-  float: left;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 10px;
-}
-span {
-  color: #888888;
-}
-
 .flipper-container {
   float: left;
   width: 150px;
-  height: 150px;
+  height: 210px;
+  /*TODO random top margin*/
   margin: 15px;
   display: block;
   perspective: 1000px;
@@ -40,6 +29,10 @@ span {
   -moz-perspective: 1000px;
   -ms-perspective: 1000px;
 }
+.flipper-container .custom-margin{
+  margin-top: 25px !important;
+}
+
 .flipper-container span {
   color: white;
 }
@@ -81,11 +74,16 @@ span {
 }
 .flipper-container > div.flipper .front {
   z-index: 2;
-  background: #19489E;
+  background: #afca0b;
+  text-align:center;
   /* front tile styles go here! */
 }
+.front-number{
+  margin-top: 25px;
+  font-size: 24px;
+}
 .flipper-container > div.flipper .back {
-  background: #9E1919;
+  background: #828282;
   /* back tile styles go here! */
 }
 .flipper-container.horizontal .front {
@@ -117,34 +115,4 @@ span {
   -webkit-transform: rotateY(0deg);
   -o-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
-}
-.flipper-container.vertical .front {
-  transform: rotateX(0deg);
-  -ms-transform: rotateX(0deg);
-  -webkit-transform: rotateX(0deg);
-  -o-transform: rotateX(0deg);
-  -moz-transform: rotateX(0deg);
-  cursor: pointer;
-}
-.flipper-container.vertical .back {
-  transform: rotateX(-180deg);
-  -ms-transform: rotateX(-180deg);
-  -webkit-transform: rotateX(-180deg);
-  -o-transform: rotateX(-180deg);
-  -moz-transform: rotateX(-180deg);
-  cursor: pointer;
-}
-.flipper-container.vertical div.flipper.flipped .front {
-  transform: rotateX(180deg);
-  -ms-transform: rotateX(180deg);
-  -webkit-transform: rotateX(180deg);
-  -o-transform: rotateX(180deg);
-  -moz-transform: rotateX(180deg);
-}
-.flipper-container.vertical div.flipper.flipped .back {
-  transform: rotateX(0deg);
-  -ms-transform: rotateX(0deg);
-  -webkit-transform: rotateX(0deg);
-  -o-transform: rotateX(0deg);
-  -moz-transform: rotateX(0deg);
 }

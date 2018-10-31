@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import Flipper from "./Flipper";
+
+
 var data = require("./input.json");
-var _ = require('lodash');
 
 class App extends Component {
   state = {selected: false}
@@ -14,6 +14,7 @@ class App extends Component {
     //check for months
     let date = new Date();
     if(date.getMonth() !== data.month){
+      //TODO: hübsch machen!!
       return(
       <div>
         <h1>
@@ -24,20 +25,18 @@ class App extends Component {
     }
 
     Object.keys(data.input).map((key,index) => {
-      let o = {date: index+1, content: data.input[index], active: false}
-      if(index+1 <= date.getDate()){
-        o.active = true
-      }
-        cards.push(o);
+      let o = data.input[index];
+      o.active = false
+      if(index+1 <= date.getDate()) o.active = true
+      cards.push(o);      
     });
-    let s = _.shuffle(cards);
 
-    let content = Object.keys(s).map((key,index) => {
-        if(s[key].active){
-          return <Flipper date={s[key].date} content={s[key].content} orientation="horizontal" key={index}/>
+    let content = Object.keys(cards).map((key,index) => {
+        if(cards[key].active){
+          return <Flipper data={cards[key]} orientation="horizontal"  key={index}/>
         }
         else
-          return <Flipper date={s[key].date} content={s[key].content} key={index}/>
+          return <Flipper date={cards[key].date} content={cards[key].content} key={index}/>
         });
 
     return (
