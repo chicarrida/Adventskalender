@@ -12,9 +12,13 @@ class Flipper extends React.Component{
   }
 
   render() {
-    let style = "flipper-container " + this.props.orientation;
-    if(Math.ceil(Math.random()*10)%3 === 0)
-      style = "flipper-container custom-margin " + this.props.orientation;
+    let style = "flipper-container margin-15 " + this.props.orientation;
+    let random = this.props.data.date%5 ;
+    if(random === 0 || random === 2)
+      style = "flipper-container margin-45 " + this.props.orientation;
+    else if(random === 1 || random === 3)
+      style = "flipper-container margin-55 " + this.props.orientation;
+
     return <div className={style} onClick={this.flip}>
       <div className={"flipper" + (this.state.flipped ? " flipped" : "")}>
         <Front>{this.props.data}</Front>
@@ -37,7 +41,10 @@ class Front extends React.Component{
 
 class Back extends React.Component{
   render() {
-    return <div className="back tile">{this.props.children.content}</div>;
+    let {content, link} = this.props.children;
+    if(link)
+      return <div className="back tile">{content}<a href={link}> ... </a></div>;
+    return <div className="back tile">{content}</div>;
   }
 }
 

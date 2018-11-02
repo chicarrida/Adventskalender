@@ -27,8 +27,8 @@ class App extends Component {
     Object.keys(data.input).map((key,index) => {
       let o = data.input[index];
       o.active = false
-      if(index+1 <= date.getDate()) o.active = true
-      cards.push(o);      
+      if(o.date <= date.getDate()) o.active = true
+      cards.push(o);
     });
 
     let content = Object.keys(cards).map((key,index) => {
@@ -36,7 +36,7 @@ class App extends Component {
           return <Flipper data={cards[key]} orientation="horizontal"  key={index}/>
         }
         else
-          return <Flipper date={cards[key].date} content={cards[key].content} key={index}/>
+          return <Flipper data={cards[key]} key={index}/>
         });
 
     return (

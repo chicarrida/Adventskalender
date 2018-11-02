@@ -1,36 +1,67 @@
 /*
 from https://www.codementor.io/chrisharrington/building-a-flipper-using-react-js-and-less-css-du107v563
 */
+#root{
+  display: flex;
+  justify-content: center;
+}
 
+a {
+  color:#afca0b;
+   text-decoration: none;
+}
+
+.grid{
+  max-width: 1400px;
+  align-content:  center;
+}
 
 .backface-visibility-hidden {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 .tile {
-  color: white;
+  color: #afca0b;
   padding: 15px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  align-content:  center;
 }
 body {
   font-family: Arial;
   font-size: 14px;
 }
 .flipper-container {
-  float: left;
   width: 150px;
-  height: 210px;
-  /*TODO random top margin*/
-  margin: 15px;
+  height: 180px;
+  float: left;
   display: block;
   perspective: 1000px;
   -webkit-perspective: 1000px;
   -moz-perspective: 1000px;
   -ms-perspective: 1000px;
+   border: 1px solid black;
 }
-.flipper-container .custom-margin{
-  margin-top: 25px !important;
+
+.flipper-container.margin-45 {
+  margin-top: 15px;
+  margin-bottom: 35px;
+  margin-left: 25px;
+  margin-right: 15px;
+}
+
+.flipper-container.margin-15 {
+  margin-top: 15px;
+  margin-bottom:35px;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+.flipper-container.margin-55 {
+  margin-top: 15px;
+  margin-bottom:35px;
+  margin-left: 45px;
+  margin-right: 15px;
 }
 
 .flipper-container span {
@@ -67,15 +98,16 @@ body {
   -o-transition: -webkit-transform ease 500ms;
   transition: -webkit-transform ease 500ms;
   -webkit-transition: transform ease 500ms;
-  -moz-transition: transform ease 500ms;
+  -moz-transition: transform ease 500ms;flipped
   -ms-transition: transform ease 500ms;
   -o-transition: transform ease 500ms;
   transition: transform ease 500ms;
 }
 .flipper-container > div.flipper .front {
   z-index: 2;
-  background: #afca0b;
+  background: #828282;hori
   text-align:center;
+  font-weight: bold;
   /* front tile styles go here! */
 }
 .front-number{
@@ -84,14 +116,21 @@ body {
 }
 .flipper-container > div.flipper .back {
   background: #828282;
+  font-weight: normal;
+  color: black;
   /* back tile styles go here! */
 }
+
+.flipper-container.horizontal{
+  cursor: pointer;
+}
+
 .flipper-container.horizontal .front {
   transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
   -o-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);flipped
   cursor: pointer;
 }
 .flipper-container.horizontal .back {
