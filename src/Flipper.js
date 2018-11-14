@@ -5,46 +5,63 @@ from https://www.codementor.io/chrisharrington/building-a-flipper-using-react-js
 class Flipper extends React.Component{
   state={
     flipped: false,
+    open: false
   }
 
-  flip= ()=> {
+  flip = (event) => {
       this.setState({ flipped: !this.state.flipped });
   }
 
-  render() {
-    let style = "flipper-container margin-15 " + this.props.orientation;
-    let random = this.props.data.date%5 ;
-    if(random === 0 || random === 2)
-      style = "flipper-container margin-45 " + this.props.orientation;
-    else if(random === 1 || random === 3)
-      style = "flipper-container margin-55 " + this.props.orientation;
+  openModal = () => {
+    this.setState({open: true});
 
-    return <div className={style} onClick={this.flip}>
-      <div className={"flipper" + (this.state.flipped ? " flipped" : "")}>
-        <Front>{this.props.data}</Front>
-        <Back>{this.props.data}</Back>
+  }
+
+  closeModal = () => {
+    this.setState({open: false});
+  }
+
+  render() {
+    let style = "flipper-container margin-15 ";
+    if(this.props.active){
+      style = style + "horizontal";
+    }
+    let modalStyle ="modal "+(this.state.open ? "vis" : "")
+    let {data} = this.props
+    let {link, image, date} = data
+    return(
+    [<div className={style} onMouseEnter={this.flip} onMouseLeave={this.flip} onClick={this.props.active? this.openModal: null}  key={date}>
+      <div className={"flipper" + ((this.state.flipped || this.state.open) ? " flipped" : "")}>
+        <Front>{data}</Front>
+        <Back>{data}</Back>
       </div>
-    </div>;
+    </div>,
+    <div id="myModal" className={modalStyle} key={date+"mdl"}>
+      <div className="modal-content" style={{backgroundImage: "url(/img/" + image + "_800x800.jpg)"}}>
+        <span className="close" onClick={this.closeModal}>&times;</span>
+        <div className="modal-text">
+          <p>{data.content}</p>
+          <a onClick={event => event.stopPropagation()} href={link} target='_blank'> {link} </a>
+        </div>
+      </div>
+    </div>
+])
   }
 }
 
 class Front extends React.Component{
 
   render() {
-    return <div className="front tile" style={{backgroundImage: "url(" + this.props.children.image + ")"}}>
-      <p className="front-number">
-      {this.props.children.date}
-      </p>
+    let {image} = this.props.children;
+    return <div className="front tile" style={{backgroundImage: "url(/img/" + image + ".jpg)"}}>
     </div>;
   }
 }
 
 class Back extends React.Component{
   render() {
-    let {content, link} = this.props.children;
-    if(link)
-      return <div className="back tile">{content}<a href={link}> ... </a></div>;
-    return <div className="back tile">{content}</div>;
+    let {teaser,image} = this.props.children;
+    return <div className="back tile" style={{backgroundImage: "url(/img/small_transparent/" + image + ".jpg)"}}><div style={{backgroundColor:"rgba(255,255,255,0.85)", width:"inherit", height:"inherit"}}>{teaser}</div></div>;
   }
 }
 

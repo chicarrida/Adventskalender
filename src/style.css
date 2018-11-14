@@ -6,14 +6,40 @@ from https://www.codementor.io/chrisharrington/building-a-flipper-using-react-js
   justify-content: center;
 }
 
-a {
-  color:#afca0b;
-   text-decoration: none;
+.grid{
+  /*max-width: 1240px;*/
+  max-width: 66%;
+  align-content:  center;
+  display:flex;
+  flex-direction: column;
 }
 
-.grid{
-  max-width: 1400px;
-  align-content:  center;
+.button{
+   border: none;
+   background-color: #afca0b;
+   color: white;
+   margin: 10px;
+   padding: 10px;
+}
+
+.particles{
+position: absolute;
+top:,0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+
+.calendar{
+  box-shadow: 2px 3px 5px 2px rgba(175, 202, 11, 0.2),0px 1px 1px 0px rgba(175, 202, 11, 0.14),0px 2px 1px -1px rgba(175, 202, 11, 0.12);
+  padding: 10px;
+}
+
+.title{
+  margin: 5px;
+  text-align: center;
+  color: #afca0b;
 }
 
 .backface-visibility-hidden {
@@ -21,18 +47,21 @@ a {
   -webkit-backface-visibility: hidden;
 }
 .tile {
+  font-size: 10px;
   color: #afca0b;
-  padding: 15px;
+  padding: 7px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   align-content:  center;
+  text-align: center;
 }
 body {
   font-family: Arial;
   font-size: 14px;
+  color: #afca0b;
 }
 .flipper-container {
-  width: 150px;
+  width: 180px;
   height: 180px;
   float: left;
   display: block;
@@ -42,25 +71,10 @@ body {
   -ms-perspective: 1000px;
    border: 1px solid black;
 }
-
-.flipper-container.margin-45 {
-  margin-top: 15px;
-  margin-bottom: 35px;
-  margin-left: 25px;
-  margin-right: 15px;
-}
-
 .flipper-container.margin-15 {
   margin-top: 15px;
   margin-bottom:35px;
   margin-left: 5px;
-  margin-right: 15px;
-}
-
-.flipper-container.margin-55 {
-  margin-top: 15px;
-  margin-bottom:35px;
-  margin-left: 45px;
   margin-right: 15px;
 }
 
@@ -111,21 +125,21 @@ body {
   /* front tile styles go here! */
 }
 .front-number{
-  margin-top: 25px;
-  font-size: 24px;
+  margin-top: 15px;
+  font-size: 28px;
+  text-shadow: -0.2px 0.2px 2px #404040
 }
 .flipper-container > div.flipper .back {
   background: #828282;
   font-weight: normal;
-  color: black;
+  font-size:20px;
+  font-style: italic;
+  cursor: pointer;
   /* back tile styles go here! */
 }
 
-.flipper-container.horizontal{
-  cursor: pointer;
-}
-
 .flipper-container.horizontal .front {
+
   transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
@@ -139,7 +153,7 @@ body {
   -webkit-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
-  cursor: pointer;
+/*  cursor: pointer;*/
 }
 .flipper-container.horizontal div.flipper.flipped .front {
   transform: rotateY(180deg);
@@ -154,4 +168,76 @@ body {
   -webkit-transform: rotateY(0deg);
   -o-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
+}
+
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* The Modal (background) */
+.modal.vis {
+   display: block;
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+   background-color: #fefefe;
+   margin: 15% auto; /* 15% from the top and centered */
+   position: fixed;
+   top: 20%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   /*padding: 20px;*/
+   border: 1px solid #afca0b;
+   max-width: 800px; /* Could be more or less, depending on screen size */
+   height: 800px;
+   background-repeat: no-repeat;
+    /*background-size: contain;*/
+}
+
+/* The Close Button */
+.close {
+   margin:25px;
+   color: #afca0b;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.modal-text{
+  margin: 125px 0px 0px 0px;
+  color:black;
+  padding: 5px 45px 5px 45px;
+  background-color: rgba(255,255,255, 0.6);
+}
+
+.modal-text>a {
+  color: #556105;
+  text-decoration: none;
 }
