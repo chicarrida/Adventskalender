@@ -243,8 +243,10 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
+  overflow: auto; /* Enable scroll if needed */
   color:white;
   font-size: 24px;
+  max-height: 800px;
   padding: 5px 45px 5px 45px;
 }
 
@@ -289,4 +291,20 @@ body {
 
   .tooltip:hover .tooltiptext {
       visibility: visible;
+  }
+
+  ::-webkit-scrollbar
+  {
+    width: 12px;  /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+  }
+
+  ::-webkit-scrollbar-track
+  {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb
+  {
+    background: rgba(0, 0, 0, 0.5);
   }
