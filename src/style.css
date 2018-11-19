@@ -34,6 +34,7 @@ z-index: -1;
 .calendar{
   box-shadow: 2px 3px 5px 2px rgba(175, 202, 11, 0.2),0px 1px 1px 0px rgba(175, 202, 11, 0.14),0px 2px 1px -1px rgba(175, 202, 11, 0.12);
   padding: 10px;
+  margin-top: 35px;
 }
 
 .title{
@@ -54,6 +55,7 @@ z-index: -1;
   -moz-box-sizing: border-box;
   align-content:  center;
   text-align: center;
+  cursor: pointer;
 }
 body {
   font-family: Arial;
@@ -61,8 +63,8 @@ body {
   color: #afca0b;
 }
 .flipper-container {
-  width: 180px;
-  height: 180px;
+  width: 65px;
+  height: 65px;
   float: left;
   display: block;
   perspective: 1000px;
@@ -187,10 +189,6 @@ body {
 /* The Modal (background) */
 .modal.vis {
    display: block;
-   position: fixed; /* Stay in place */
-   z-index: 1; /* Sit on top */
-   left: 0;
-   top: 0;
    width: 100%; /* Full width */
    height: 100%; /* Full height */
    overflow: auto; /* Enable scroll if needed */
@@ -203,21 +201,14 @@ body {
    background-color: #fefefe;
    margin: 15% auto; /* 15% from the top and centered */
    position: fixed;
-   top: 20%;
+   top: 25%;
    left: 50%;
    transform: translate(-50%, -50%);
-   /*padding: 20px;*/
-   border: 1px solid #afca0b;
-   max-width: 800px; /* Could be more or less, depending on screen size */
-   height: 800px;
-   background-repeat: no-repeat;
-    /*background-size: contain;*/
+   background-color: rgb(50,50,50);
 }
 
 /* The Close Button */
 .close {
-   margin:25px;
-   color: #afca0b;
    float: right;
    font-size: 28px;
    font-weight: bold;
@@ -230,14 +221,72 @@ body {
    cursor: pointer;
 }
 
+.title{
+  color:white;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  margin:25px;
+}
+
+.swatch{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  font-size: 20px;
+}
+
 .modal-text{
-  margin: 125px 0px 0px 0px;
-  color:black;
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  color:white;
+  font-size: 24px;
   padding: 5px 45px 5px 45px;
-  background-color: rgba(255,255,255, 0.6);
 }
 
 .modal-text>a {
   color: #556105;
   text-decoration: none;
 }
+
+.image{
+  padding: 5px;
+}
+
+.sample{
+  width: 40px;
+  height:40px;
+  margin: 8px;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    padding: 5px ;
+    border-radius: 5px;
+
+/*position*/
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
+
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+  }

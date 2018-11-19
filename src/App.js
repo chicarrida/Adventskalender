@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Flipper from "./Flipper";
 import Particles from 'react-particles-js';
 
-
-var data = require("./input.json");
+var data = require("./werner.json");
 
 class App extends Component {
   state = {animation: true}
@@ -14,30 +13,13 @@ toggleAnimation = () =>{
 
   render() {
     let cards = [];
-    //check for months
-    let date = new Date();
-    if(date.getMonth() !== data.month){
-      return(
-      <div>
-        <h1>
-          Schon vorbei....
-        </h1>
-      </div>
-      )
-    }
 
-    Object.keys(data.input).map((key,index) => {
-      let o = data.input[index];
-      o.active = false
-      if(o.date <= date.getDate()) o.active = true
+    Object.keys(data).map((key,index) => {
+      let o = data[index];
       cards.push(o);
     });
 
     let content = Object.keys(cards).map((key,index) => {
-        if(cards[key].active){
-          return <Flipper data={cards[key]} active={true}  key={index}/>
-        }
-        else
           return <Flipper data={cards[key]} key={index}/>
         });
 
@@ -155,14 +137,12 @@ toggleAnimation = () =>{
                     "retina_detect": true}}
                      /> : null}
       <div className="title">
-        <h2>SUPER TOLLER TITEL MIT 1A STYLING KOMMT HIER HIN</h2>
+        
       </div>
         <div className="calendar">
           {content}
         </div>
         <div className="title">
-          <p><h6>| Bilder: Carola | Code: Melanie |  Idee: Stefanie | Texte: Antonia |</h6>
-          <button className="button" onClick={this.toggleAnimation}>{this.state.animation ? "Animation Stoppen" : "Animation starten" }</button></p>
         </div>
 
       </div>
